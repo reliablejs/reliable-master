@@ -136,16 +136,16 @@ class Charts extends React.Component {
       xAxis: {
         tickValues: d3.time.scale().domain([this.state.data1.values[0].x, this.state.data1.values[this.state.data1.values.length - 1].x]).ticks(d3.time.day, 3),
         tickFormat: d3.time.format('%m/%d'),
-        label: '日期'
+        label: 'date'
       },
       yAxis: {
         tickValues: d3.scale.linear().domain([0, _.max(this.state.data1.values, (d) => d.y).y]).ticks(4),
-        label: '任务数'
+        label: 'task number'
       },
       shapeColor: '#1F77B4',
       tooltipHtml: (label, data) => {
         var d = new Date(data.x);
-        return `日期: ${d.getFullYear().toString().substr(2)}年${d.getMonth() + 1}月${d.getDate()}日 任务数: ${data.y}`;
+        return `date: ${d.getFullYear().toString().substr(2)}/${d.getMonth() + 1}/${d.getDate()} task number: ${data.y}`;
       },
       tooltipContained: true
     };
@@ -169,11 +169,11 @@ class Charts extends React.Component {
     return (
       <div className="chart fn-clear">
         <div className="linear-chart">
-          <h4>30天任务数曲线</h4>
+          <h4>Task number in 30 days</h4>
           <LineChart {...this.getLineChartProps()} />
         </div>
         <div className="pie-chart">
-          <h4>slave负载率</h4>
+          <h4>Slave load factor</h4>
           <PieChart {...this.getPieChartProps()} />
         </div>
       </div>

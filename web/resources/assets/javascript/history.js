@@ -193,15 +193,15 @@ class Charts extends React.Component {
       xAxis: {
         tickValues: d3.time.scale().domain([this.state.data1.values[0].x, this.state.data1.values[this.state.data1.values.length - 1].x]).ticks(d3.time.day, 1),
         tickFormat: d3.time.format('%m/%d'),
-        label: '日期'
+        label: 'date'
       },
       yAxis: {
         tickValues: d3.scale.linear().domain([0, 100]).ticks(5),
-        label: '成功率'
+        label: 'success rate'
       },
       tooltipHtml: (label, data) => {
         var d = new Date(data.x);
-        return `日期: ${d.getFullYear().toString().substr(2)}年${d.getMonth() + 1}月${d.getDate()}日 成功率: ${data.y}%`;
+        return `date: ${d.getFullYear().toString().substr(2)}/${d.getMonth() + 1}/${d.getDate()} success rate: ${data.y}%`;
       },
       tooltipContained: true
     };
@@ -249,15 +249,15 @@ class Charts extends React.Component {
     return (
       <div className="chart fn-clear">
         <div className = "linear-chart">
-          <h4>一周通过率曲线</h4>
+          <h4>Pass rate in a week</h4>
           <LineChart {...this.getLineChartProps()} />
         </div>
         <div className="pie-chart">
-          <h4>一周成功率</h4>
+          <h4>Success rate in a week</h4>
           <PieChart {...this.getPieChart1Props()}/>
         </div>
         <div className="pie-chart">
-          <h4>总成功率</h4>
+          <h4>Total success rate</h4>
           <PieChart {...this.getPieChart2Props()} />
         </div>
       </div>

@@ -35,7 +35,7 @@ class SiteNav extends React.Component {
         <span>{this.props.gettext('page.common.nav.hello')},</span>
         <a href="/dashboard/user" className={this.addHoverByPathName('/dashboard/user')}>{this.props.session.user.name}</a>
         <a href="/dashboard" className={this.addHoverByPathName('/dashboard')}>{this.props.gettext('page.common.nav.manager')}</a>
-        <a href="/badgeboard" className={`hidden ${this.addHoverByPathName('/badgeboard')}`}>{this.props.gettext('page.global.badgeboard')}</a>
+        <a href="/badgeboard" className="hidden">{this.props.gettext('page.global.badgeboard')}</a>
         <a href={this.props._options.site.docurl} target="_blank">{this.props.gettext('page.global.help')}</a>
         <a href="/dashboard/setting" className={this.addHoverByPathName('/dashboard/setting')}>{this.props.session.user.is_sys_admin ? this.props.gettext('page.common.nav.setting') : null}</a>
         <a href="#" className={this.props._options.site.login ? '' : 'hidden'} id="submit_logout">{this.props.gettext('page.common.nav.logout')}</a>
@@ -47,7 +47,7 @@ class SiteNav extends React.Component {
     return (
       <div>
         <a href="/dashboard" className={this.addHoverByPathName('/dashboard')}>{this.props.gettext('page.common.nav.manager')}</a>
-        <a href="/badgeboard" className={this.addHoverByPathName('/badgeboard')}>{this.props.gettext('page.global.badgeboard')}</a>
+        <a href="/badgeboard" className="hidden">{this.props.gettext('page.global.badgeboard')}</a>
         <a href={this.props._options.site.docurl} target="_blank">{this.props.gettext('page.global.help')}</a>
         <a href="/login" className={`${this.addHoverByPathName('/login')} ${this.props._options.site.login ? '' : 'hidden'}`}>{this.props.gettext('page.title.login')}</a>
         <a href="/signup" className={`${this.addHoverByPathName('/signup')} ${this.props._options.site.login ? '' : 'hidden'}`}>{this.props.gettext('page.title.signup')}</a>
