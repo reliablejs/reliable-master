@@ -21,7 +21,7 @@ reliable-master is the master part of the [reliable](https://github.com/reliable
 
 ## Documents
 
-- [deploy with docker](./docs/en/deploy.md)
+- [Deploy with docker](./docs/en/deploy.md)
 
 ## Other Features
 

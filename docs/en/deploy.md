@@ -22,7 +22,7 @@ If you want to run in production, run `make deploy env=prod` instead, default is
 
 ## Configuring
 
-`relibale` default configuration is in [config.js](common/config.js), you could override it by add config file in root directory which need named `*.reliable.config.js`.
+`relibale` default configuration is in [config.js](../../common/config.js), you could override it by add config file in root directory which need named `*.reliable.config.js`.
 
 There is the relevant description:
 
@@ -33,7 +33,7 @@ There is the relevant description:
 - site
   Some preferences for your site, like title, baseurl, and so on.
 - auth
-  Third part token configuration, like [Github](http://github.com/), [Gitlab](https://gitlab.com/).
+  Third part token configuration, like [Github](http://github.com/), [Gitlab](https://gitlab.com).
 
 - mail
   Mail service configuration, see [Nodemailer](https://github.com/nodemailer/nodemailer).
