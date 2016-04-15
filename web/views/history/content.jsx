@@ -53,7 +53,7 @@ class Content extends React.Component {
         <tr title={item.description} key={item._id}>
           <th scope="row">{this.props.history.count - i - 10 * (this.props.page.pagination.current - 1) }</th>
           <td>{taskStatus}</td>
-          <td>{extraInfo || '-'}</td>
+          <td><a href={ '/task/' + item._id }>{extraInfo || '-'}</a></td>
           <td>{item.duration || '-'}</td>
           <td>{item.end_date || '-'}</td>
           <td className="text-center">

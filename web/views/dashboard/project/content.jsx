@@ -52,7 +52,7 @@ class Content extends React.Component {
           <td>
             <a href={'/history/' + item._id} target="_blank">{item.title || '-'}</a>
           </td>
-          <td className="text-center">{item.updated_date || '-'}&nbsp;[{item.last_modify_nick_name || '-'}]</td>
+          <td className="text-center">{item.last_modify_nick_name}</td>
           <td className="hidden">{item.created_date || '-'}</td>
           <td className="text-right">
             {this.renderSubscribe(item)}

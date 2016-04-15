@@ -20,7 +20,7 @@ class Footer extends React.Component {
     return (
       <footer>
         <div className="text-center">
-          &copy;{new Date().getFullYear()}&nbsp;<a target="_blank" href={this.props._options.pkg.homepage}>{this.props._options.site.title || this.props._options.pkg.name}</a>
+          &copy;{new Date().getFullYear()}&nbsp;{this.props._options.site.title || this.props._options.pkg.name}<br />Powered by <a href="https://github.com/reliablejs" target="_blank">Reliable</a>
         </div>
       </footer>
     );
