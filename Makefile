@@ -63,4 +63,21 @@ flush:
 	find ./logs -type f -and -name '*.log' | xargs rm
 adduser:
 	docker exec -it reliable_master_${env} /reliable-master/bin/reliable-master adduser
+install:
+	@npm install
+test: install
+	@node --harmony \
+		${npm_bin}/istanbul cover ${npm_bin}/_mocha \
+		-- \
+		--timeout 10000 \
+		--require co-mocha
+travis: install
+	@NODE_ENV=test $(BIN) $(FLAGS) \
+		./node_modules/.bin/istanbul cover \
+		./node_modules/.bin/_mocha \
+		--report lcovonly \
+		-- -u exports \
+		$(REQUIRED) \
+		$(TESTS) \
+		--bail
 .PHONY: test logs

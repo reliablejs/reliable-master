@@ -13,10 +13,7 @@
 
 'use strict';
 
-const Reliable = require('..');
-
 describe('server', function() {
   it('should be ok', function() {
-    Reliable.should.be.ok;
   });
 });

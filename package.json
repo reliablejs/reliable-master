@@ -43,13 +43,17 @@
     "zmq": "2.13.0"
   },
   "devDependencies": {
+    "co-mocha": "~1.1.2",
     "eslint": "~1.1.0",
     "eslint-plugin-react": "~3.2.3",
+    "istanbul": "*",
     "json-loader": "~0.5.2",
     "jsx-loader": "~0.13.2",
     "killing": "~1.0.1",
+    "mocha": "~2.4.5",
     "pre-commit": "~1.1.1",
     "react-d3-components": "~0.6.0",
+    "should": "*",
     "webpack": "~1.9.0"
   },
   "scripts": {

@@ -1,4 +1,16 @@
 language: node_js
 node_js:
-  - "5"
-  - "4.2.1"
+  - "4"
+sudo: required
+dist: trusty
+cache:
+  apt: true
+addons:
+  apt:
+    packages:
+    - libzmq3-dev
+services:
+  - redis-server
+  - mongodb
+script: "make travis"
+after_script: "npm install coveralls@2 && cat ./coverage/lcov.info | coveralls"
