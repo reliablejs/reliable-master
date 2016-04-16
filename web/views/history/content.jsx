@@ -40,8 +40,8 @@ class Content extends React.Component {
         case 'running':
           taskStatus = <span className="label label-info">{this.props.gettext('page.task.status.running')}</span>;
           break;
-        case 'success':
-          taskStatus = <span className="label label-success">{this.props.gettext('page.task.status.success')}</span>;
+        case 'passed':
+          taskStatus = <span className="label label-success">{this.props.gettext('page.task.status.passed')}</span>;
           break;
         case 'failed':
           taskStatus = <span className="label label-danger">{this.props.gettext('page.task.status.failed')}</span>;

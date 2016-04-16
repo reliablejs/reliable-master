@@ -58,7 +58,7 @@ class Content extends React.Component {
       return 'alert-warning';
     } else if (status_name === 'running') {
       return 'alert-info'
-    } else if (status_name === 'success') {
+    } else if (status_name === 'passed') {
       return 'alert-success';
     } else if (status_name === 'failed') {
       return 'alert-danger';
