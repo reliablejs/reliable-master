@@ -26,11 +26,11 @@ const PAGE_SIZE = 10;
 /**
  * 0 -> waiting
  * 1 -> running
- * 2 -> success
+ * 2 -> passed
  * 3 -> failed
 */
 
-const STATUS = ['waiting', 'running', 'success', 'failed'];
+const STATUS = ['waiting', 'running', 'passed', 'failed'];
 
 // Task table schema
 const TaskSchema = new Schema({
