@@ -26,6 +26,9 @@ function handler(type, log) {
       perfFragments += performance(log);
       return ' ';
       break;
+    case 'chart':
+      return ' ';
+      break;
     default:
       return '';
   }
@@ -44,18 +47,18 @@ function format(logs) {
   logs = beautify(logs);
   var pattern = /\<\#([\s\S]*?)\#\>/g;
   perfFragments = hasPerformanceData(logs) ? EOL + '<p>Performance Table:</p>' : '';
-  return logs.replace(pattern, function(matchStr, identifyStr) {
+  return (logs.replace(pattern, function(matchStr, identifyStr) {
     var arr = identifyStr.split('|');
     var type = arr[0];
     var log = arr[1];
     if (type && log) {
       var res = handler(type, log);
       if (res) {
-        return res;
+        return res.trim();
       }
     }
     return matchStr;
-  }) + perfFragments;
+  }) + perfFragments).replace(/\n{2,}/g, '\n\n');
 }
 
 module.exports = format;

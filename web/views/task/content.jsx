@@ -1,6 +1,7 @@
 'use strict';
 
 const React = require('react');
+const Charts = require('./charts')
 
 const format = require('../logFormatter');
 
@@ -113,6 +114,7 @@ class Content extends React.Component {
     );
   }
 
+
   render() {
     return (
       <div className="container">
@@ -143,6 +145,11 @@ class Content extends React.Component {
               <code className="bash" dangerouslySetInnerHTML={{__html: format(this.props.detail.result_string)}}>
               </code>
             </pre>
+            <div id="logs">
+              <div className="bash" dangerouslySetInnerHTML={{__html: this.props.detail.result_string}}>
+              </div>
+            </div>
+            <Charts />
           </div>
           <div id="affix-sidebar" className="col-md-3 main-right">
             <div className="build-widget">
