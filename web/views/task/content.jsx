@@ -1,6 +1,7 @@
 'use strict';
 
 const React = require('react');
+const Charts = require('./charts')
 
 const Charts = require('./charts')
 const format = require('../logFormatter');
