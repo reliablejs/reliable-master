@@ -50,11 +50,7 @@ class Charts extends React.Component {
 
   componentDidMount() {
     this.getData();
-<<<<<<< cb6293a3606d3463e51ace4155bbeb962667047f
     if (this.state.isShown) {
-=======
-    if(this.state.isShown) {
->>>>>>> Add chart
       this.setDataState();
     }
   }
