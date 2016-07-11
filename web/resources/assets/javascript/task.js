@@ -118,10 +118,6 @@ class Charts extends React.Component {
         x: i * timer,
         y: +threadCount[i]
       });
-    }
-    return {
-      label: 'ThreadCount',
-      values: valuesTemp
     };
   }
 
@@ -133,10 +129,6 @@ class Charts extends React.Component {
         x: i * timer,
         y: +cpu[i]
       });
-    }
-    return {
-      label: 'cpu',
-      values: valuesTemp
     };
   }
 
