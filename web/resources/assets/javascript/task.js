@@ -21,7 +21,7 @@ class Charts extends React.Component {
           y: 0
         }]
       },
-    ThreadCount: {
+      ThreadCount: {
         values: [{
           x: 0,
           y: 0
@@ -50,7 +50,7 @@ class Charts extends React.Component {
 
   componentDidMount() {
     this.getData();
-    if(this.state.isShown) {
+    if (this.state.isShown) {
       this.setDataState();
     }
   }
@@ -65,7 +65,7 @@ class Charts extends React.Component {
       result.forEach(obj => {
         var item = obj.item;
         if (!(item in map)) {
-          map[item] = []
+          map[item] = [];
         }
         map[item].push(obj.data);
       });
@@ -79,70 +79,80 @@ class Charts extends React.Component {
     var arr = pattern.exec(logs);
     if (arr) {
       var log = arr[1].trim();
-      timer = log.split(" ")[0];
+      timer = log.split(' ')[0];
     } else {
       timer = 5;
     }
-    return parseInt(timer);
+    return +timer;
   }
 
   getData() {
     logs = document.querySelector('#logs').textContent;
     result = this.extract(logs);
-    if(Object.keys(result).length) {
+    if (Object.keys(result).length) {
       this.state.isShown = true;
     }
     timer = this.extractTimer(logs);
   }
 
   getMemData() {
-    this.getData();
     var valuesTemp = [];
-    var tempY;
-    for(var i = 0; i < result['Meminfo'].length; i++) {
-      // while(parseInt(result['Meminfo'][i])>100){
-      //   tempY = parseInt(result['Meminfo'][i])/10000;
-      // }
-      valuesTemp.push({x: i*timer, y: parseInt(result['Meminfo'][i])});
+    var meminfo = result['Meminfo'];
+    for (var i = 0, j = meminfo.length; i < j; i++) {
+      valuesTemp.push({
+        x: i * timer,
+        y: +meminfo[i]
+      });
     }
     return {
       label: 'Meminfo',
       values: valuesTemp
-    }
+    };
   }
 
   getThreadData() {
-    this.getData();
     var valuesTemp = [];
-    for(var i = 0; i < result['ThreadCount'].length; i++) {
-      valuesTemp.push({x: i*timer, y:parseInt(result['ThreadCount'][i])});
+    var threadCount = result['ThreadCount'];
+    for (var i = 0, j = threadCount.length; i < j; i++) {
+      valuesTemp.push({
+        x: i * timer,
+        y: +threadCount[i]
+      });
     }
     return {
       label: 'ThreadCount',
       values: valuesTemp
-    }
+    };
   }
 
   getCpuData() {
-    this.getData();
     var valuesTemp = [];
-    for(var i = 0; i < result['cpu'].length; i++) {
-      valuesTemp.push({x: i*timer, y:parseInt(result['cpu'][i])});
+    var cpu = result['cpu'];
+    for (var i = 0, j = cpu.length; i < j; i++) {
+      valuesTemp.push({
+        x: i * timer,
+        y: +cpu[i]
+      });
     }
     return {
       label: 'cpu',
       values: valuesTemp
-    }
+    };
   }
 
   getTrafficWifiData() {
-    this.getData();
     var valuesTempRcv = [];
     var valuesTempSnd = [];
-    for(var i = 0; i < result['Traffic'].length; i++) {
-      valuesTempRcv.push({x: i*timer, y:(parseInt(result['Traffic'][i].wifi.rcv)-parseInt(result['Traffic'][0].wifi.rcv))/1024});
-      valuesTempSnd.push({x: i*timer, y:(parseInt(result['Traffic'][i].wifi.snd)-parseInt(result['Traffic'][0].wifi.snd))/1024});
-      //console.log((parseInt(result['Traffic'][i].wifi.rcv)-parseInt(result['Traffic'][0].wifi.rcv))/1024);
+    var traffic = result['Traffic'];
+    for (var i = 0, j = traffic.length; i < j; i++) {
+      valuesTempRcv.push({
+        x: i * timer,
+        y: (traffic[i].wifi.rcv - traffic[0].wifi.rcv) / 1024
+      });
+      valuesTempSnd.push({
+        x: i * timer,
+        y: (traffic[i].wifi.snd - traffic[0].wifi.snd) / 1024
+      });
     }
     return [
       {
@@ -153,16 +163,22 @@ class Charts extends React.Component {
         label: 'TrafficWifiSnd(KB)',
         values: valuesTempSnd
       }
-    ]
+    ];
   }
 
   getTrafficMobileData() {
-    this.getData();
     var valuesTempRcv = [];
     var valuesTempSnd = [];
-    for(var i = 0; i < result['Traffic'].length; i++) {
-      valuesTempRcv.push({x: i*timer, y:(parseInt(result['Traffic'][i].mobile.rcv)-parseInt(result['Traffic'][0].mobile.rcv))});
-      valuesTempSnd.push({x: i*timer, y:(parseInt(result['Traffic'][i].mobile.snd)-parseInt(result['Traffic'][0].mobile.snd))});
+    var traffic = result['Traffic'];
+    for (var i = 0, j = traffic.length; i < j; i++) {
+      valuesTempRcv.push({
+        x: i * timer,
+        y: (traffic[i].mobile.rcv - traffic[0].mobile.rcv) / 1024
+      });
+      valuesTempSnd.push({
+        x: i * timer,
+        y: (traffic[i].mobile.snd - traffic[0].mobile.snd) / 1024
+      });
     }
     return [
       {
@@ -173,17 +189,15 @@ class Charts extends React.Component {
         label: 'TrafficMobileSnd',
         values: valuesTempSnd
       }
-    ]
+    ];
   }
 
-  setDataState(){
+  setDataState() {
     var Meminfo = this.getMemData();
     var ThreadCount = this.getThreadData();
     var cpu = this.getCpuData();
     var wifiData = this.getTrafficWifiData();
     var mobileData = this.getTrafficMobileData();
-
-    console.log(`Meminfo: ${JSON.stringify(Meminfo)}`)
 
     this.setState({
       Meminfo: Meminfo,
@@ -203,12 +217,11 @@ class Charts extends React.Component {
         top: 10, bottom: 50, left: 100, right: 10
       },
       xAxis: {
-        label:'time'
+        label: 'time'
       },
       yAxis: {
         label: flag
-      },
-
+      }
     };
   }
 
@@ -222,22 +235,25 @@ class Charts extends React.Component {
 
         <LineChart
           data={this.state.cpu}
-          {...this.getLineChartProps('CPU')}/>
+          {...this.getLineChartProps('CPU')}
+        />
 
-       <LineChart
+        <LineChart
           data={this.state.ThreadCount}
-         {...this.getLineChartProps('ThreadCount')}/>
+         {...this.getLineChartProps('ThreadCount')}
+        />
 
-       <LineChart
-        data={this.state.mobileData}
-         {...this.getLineChartProps('MobileTraffic')}/>
+        <LineChart
+          data={this.state.mobileData}
+         {...this.getLineChartProps('MobileTraffic')}
+        />
 
         <LineChart
           data={this.state.wifiData}
-          {...this.getLineChartProps('WifiTraffic')}/>
-        </div>
-
-    )
+          {...this.getLineChartProps('WifiTraffic')}
+        />
+      </div>
+    );
   }
 }
 
