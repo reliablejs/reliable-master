@@ -87,7 +87,7 @@ class Charts extends React.Component {
   }
 
   getData() {
-    logs = document.querySelector('#logs').textContent;
+    logs = $('#logs').text();
     result = this.extract(logs);
     if (Object.keys(result).length) {
       this.state.isShown = true;
