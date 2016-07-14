@@ -223,8 +223,8 @@ if (charts) {
       node.selectedIndex = 1;
     });
 
-    $('#table-environment').html("");
-    addNewRow('','');
+    $('#table-environment').html('');
+    addNewRow('', '');
 
     if (type !== 'edit') {
       dialogIsEidtMode = false;
@@ -269,7 +269,7 @@ if (charts) {
       }
     });
   });
-  
+
   $('#submit-project').on('click', function() {
 
     var envvalue;
