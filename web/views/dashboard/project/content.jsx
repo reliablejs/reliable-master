@@ -39,6 +39,7 @@ class Content extends React.Component {
           <td>
             <a href={'/history/' + item._id} target="_blank">{item.title || '-'}</a>
           </td>
+          <td className="text-right">{item.description || '-'}</td>
           <td className="text-center">{item.last_modify_nick_name}</td>
           <td className="hidden">{item.created_date || '-'}</td>
           <td className="text-right">
@@ -78,6 +79,7 @@ class Content extends React.Component {
             <tr>
             <th>ID</th>
               <th>{this.props.gettext('page.global.title')}</th>
+              <th className="text-right">{this.props.gettext('page.global.description')}</th>
               <th className="text-center">{this.props.gettext('page.global.editor')}</th>
               <th className="hidden">{this.props.gettext('page.global.createdate')}</th>
               <th className="text-right">{this.props.gettext('page.global.operate')}</th>

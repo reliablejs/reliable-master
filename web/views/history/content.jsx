@@ -66,7 +66,7 @@ class Content extends React.Component {
           <tr>
             <th>ID</th>
             <th>{this.props.gettext('page.global.status')}</th>
-            <th>{this.props.gettext('page.global.description')}</th>
+            <th>{this.props.gettext('page.global.commitInfo')}</th>
             <th>{this.props.gettext('page.global.duration')}</th>
             <th>{this.props.gettext('page.global.enddate')}</th>
             <th className="text-center">{this.props.gettext('page.global.operate')}</th>

@@ -31,6 +31,7 @@ module.exports = co.wrap(function *() {
   let body = projectData.repositoryUrl;
 
   body += `#${projectData.repositoryBranch}`;
+  body += `#${projectData.environment}`;
 
   process.send({
     message: 'dispatch',

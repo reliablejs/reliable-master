@@ -9,6 +9,11 @@ var _ = require('./common/helper');
 var PieChart = ReactD3.PieChart;
 var LineChart = ReactD3.LineChart;
 
+var name = $('.environment-left').first().text();
+var value = $('.environment-right').first().text();
+var placeholdername = $('#inputenvname').val();
+var placeholdervalue = $('#inputenvvalue').val();
+
 class Charts extends React.Component {
 
   constructor(props) {
@@ -187,6 +192,24 @@ if (charts) {
       node.value = '';
     });
   });
+
+  var renderEnvVariable = function() {
+
+    var data = $('input[name="environment"]').val();
+
+    if (data.length) {
+      $('#table-environment').html('');
+      data = data.split(',');
+      data.forEach(function(item) {
+        var key = item.split('=')[0];
+        var val = item.split('=')[1];
+        addNewRow(key, val);
+      });
+
+    }
+
+  };
+
   $('#project-modal').on('show.bs.modal', function(e) {
     var relatedTarget = e.relatedTarget;
 
@@ -199,6 +222,9 @@ if (charts) {
     $('#project-modal').find('select').each(function(e, node) {
       node.selectedIndex = 1;
     });
+
+    $('#table-environment').html("");
+    addNewRow('','');
 
     if (type !== 'edit') {
       dialogIsEidtMode = false;
@@ -229,6 +255,8 @@ if (charts) {
           $('textarea[name="description"]').val(data.description);
           $('input[name="repositoryUrl"]').val(data.repositoryUrl);
           $('input[name="repositoryBranch"]').val(data.repositoryBranch);
+          $('input[name="environment"]').val(data.environment);
+          renderEnvVariable();
           if (duration) {
             $('select[name="hours"]').val(hours);
             $('select[name="minutes"]').val(minutes);
@@ -241,7 +269,30 @@ if (charts) {
       }
     });
   });
+  
   $('#submit-project').on('click', function() {
+
+    var envvalue;
+    var rows = $('#table-environment tr');
+    var tempArr = rows.map(function (idx, el) {
+      var inputs = $(el).find('input');
+      var k = inputs[0].value.trim();
+      var v = inputs[1].value.trim();
+      if (k === '' || k == null) {
+        return;
+      }
+      return k + '=' + v;
+    }).toArray().filter(function (item) {
+      if(item.indexOf('undefined') === -1) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    envvalue = tempArr.join(',');
+    alert(envvalue);
+    $('#envvalue').val(envvalue);
+
     var data = {};
     $('#project-modal').find('input').each(function(e, node) {
       data[node.name] = node.value;
@@ -331,6 +382,20 @@ if (charts) {
         location.reload();
       }
     });
+  });
+
+  var addNewRow = function (inputname, inputvalue) {
+    var newRow = '<tr> ' +
+      '<td class="td-environment"><span class="environment-left">' + name + '</span></td> ' +
+      '<td name="environment" class="td-environment"><input type="text" class="input-env" placeholder="' + placeholdername +'" value="' + inputname + '"/></td> ' +
+      '<td class="td-environment"><span class="environment-right">' + value + '</span></td> ' +
+      '<td name="environment" class="td-environment"><input type="text" class="input-env" placeholder="' + placeholdervalue + '" value="' + inputvalue +'"/></td> ' +
+      '</tr>';
+    $('#table-environment').append(newRow);
+  }
+
+  $('#add-environment').on('click', function () {
+    addNewRow('', '');
   });
 
   $('.dropdown-menu a').on('click', function(e) {

@@ -43,6 +43,21 @@ class Dialog extends React.Component {
                   <input name="repositoryBranch" placeholder={this.props.gettext('page.task.inputprojectrepositorybranch')} className="form-control" value="master" />
                 </div>
                 <div className="form-group alert">
+                  <label htmlFor="message-text" className="control-label">{this.props.gettext('page.global.environment')}</label>
+                  <table id="table-environment">
+                    <tr>
+                      <td className="td-environment"><span className="environment-left">{this.props.gettext('page.global.envkey')}</span></td>
+                      <td className="td-environment"><input type="text" className="input-env" placeholder={this.props.gettext('page.task.inputenvname')}/></td>
+                      <td className="td-environment"><span className="environment-right">{this.props.gettext('page.global.envvalue')}</span></td>
+                      <td className="td-environment"><input type="text" className="input-env" placeholder={this.props.gettext('page.task.inputenvvalue')}/></td>
+                    </tr>
+                  </table>
+                  <input type="hidden" value={this.props.gettext('page.task.inputenvname')} id="inputenvname"/>
+                  <input type="hidden" value={this.props.gettext('page.task.inputenvvalue')} id="inputenvvalue"/>
+                  <button type="button" className="btn btn-add" id="add-environment">{this.props.gettext('page.global.add')}</button>
+                  <input id="envvalue" name="environment"  type="hidden"/>
+                </div>
+                <div className="form-group alert">
                   <label htmlFor="message-text" className="control-label">{this.props.gettext('page.task.timer')}</label>
                   <div>
                     <div className="selectorDiv">

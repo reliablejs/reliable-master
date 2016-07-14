@@ -48,6 +48,49 @@
   height: 47px;
 }
 
+.td-environment {
+  padding-bottom: 6px;
+}
+
+.environment-right {
+   margin-top: 3px;
+   margin-right: 10px;
+   margin-left: 20px;
+}
+
+.environment-left {
+  margin-top: 3px;
+  margin-right: 10px;
+}
+
+#table-environment {
+  width: 100%;
+}
+
+.input-env {
+  line-height: 1.42857143;
+  font-size: 14px;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+
+#add-environment {
+  color: #fff;
+  margin-top: 10px;
+  position: absolute;
+  right: 30px;
+  width: 60px;
+  background-color: #1E90FF;
+}
+
 #topbar .panel h5 {
   font-family: "Open Sans";
   font-size: 14px;

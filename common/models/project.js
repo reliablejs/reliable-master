@@ -45,6 +45,15 @@ const ProjectSchema = new Schema({
   },
 
   /**
+   * environment for project
+   * <key, value>
+   */
+  
+  environment: {
+    type: String
+  },
+
+  /**
    * status for project
    * 0 - > open
    * 1 - > close
