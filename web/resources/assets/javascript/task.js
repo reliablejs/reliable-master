@@ -135,7 +135,7 @@ class Charts extends React.Component {
       });
     }
     return {
-      label: 'cpu',
+      label: 'CPU',
       values: valuesTemp
     };
   }
@@ -156,11 +156,11 @@ class Charts extends React.Component {
     }
     return [
       {
-        label: 'TrafficWifiRcv(KB)',
+        label: 'Receive',
         values: valuesTempRcv
       },
       {
-        label: 'TrafficWifiSnd(KB)',
+        label: 'Send',
         values: valuesTempSnd
       }
     ];
@@ -181,10 +181,10 @@ class Charts extends React.Component {
       });
     }
     return [{
-      label: 'TrafficMobileRcv',
+      label: 'Receive',
       values: valuesTempRcv
     }, {
-      label: 'TrafficMobileSnd',
+      label: 'Send',
       values: valuesTempSnd
     }];
   }
@@ -214,11 +214,15 @@ class Charts extends React.Component {
         top: 10, bottom: 50, left: 100, right: 10
       },
       xAxis: {
-        label: 'time'
+        label: 'time(s)'
       },
       yAxis: {
         label: flag
-      }
+      },
+      tooltipHtml: (label, data) => {
+        return label + ": (" + data.x + ", " + data.y + ")";
+      },
+      tooltipContained: true
     };
   }
 
@@ -227,12 +231,12 @@ class Charts extends React.Component {
       <div className={this.state.isShown ? '' : 'hidden'}>
         <LineChart
           data={this.state.Meminfo}
-          {...this.getLineChartProps('Meminfo')}
+          {...this.getLineChartProps('Meminfo(B)')}
         />
 
         <LineChart
           data={this.state.cpu}
-          {...this.getLineChartProps('CPU')}
+          {...this.getLineChartProps('CPU(%)')}
         />
 
         <LineChart
@@ -242,12 +246,12 @@ class Charts extends React.Component {
 
         <LineChart
           data={this.state.mobileData}
-         {...this.getLineChartProps('MobileTraffic')}
+         {...this.getLineChartProps('MobileTraffic(KB)')}
         />
 
         <LineChart
           data={this.state.wifiData}
-          {...this.getLineChartProps('WifiTraffic')}
+          {...this.getLineChartProps('WifiTraffic(KB)')}
         />
       </div>
     );

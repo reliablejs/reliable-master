@@ -154,3 +154,11 @@ tr:first-child {
 th, td {
   padding: 5px 10px;
 }
+
+.tooltip {
+    padding: 2px;
+    opacity: 1;
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, .1);
+}
