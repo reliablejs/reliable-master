@@ -231,7 +231,7 @@ class Charts extends React.Component {
       <div className={this.state.isShown ? '' : 'hidden'}>
         <LineChart
           data={this.state.Meminfo}
-          {...this.getLineChartProps('Meminfo(KB)')}
+          {...this.getLineChartProps('Meminfo(kb)')}
         />
 
         <LineChart
@@ -246,12 +246,12 @@ class Charts extends React.Component {
 
         <LineChart
           data={this.state.mobileData}
-         {...this.getLineChartProps('MobileTraffic(KB)')}
+         {...this.getLineChartProps('MobileTraffic(kb)')}
         />
 
         <LineChart
           data={this.state.wifiData}
-          {...this.getLineChartProps('WifiTraffic(KB)')}
+          {...this.getLineChartProps('WifiTraffic(kb)')}
         />
       </div>
     );
