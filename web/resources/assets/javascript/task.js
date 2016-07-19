@@ -220,7 +220,7 @@ class Charts extends React.Component {
         label: flag
       },
       tooltipHtml: (label, data) => {
-        return label + ": (" + data.x + ", " + data.y + ")";
+        return label + ': (' + data.x + ', ' + data.y + ')';
       },
       tooltipContained: true
     };
@@ -241,12 +241,12 @@ class Charts extends React.Component {
 
         <LineChart
           data={this.state.ThreadCount}
-         {...this.getLineChartProps('ThreadCount')}
+          {...this.getLineChartProps('ThreadCount')}
         />
 
         <LineChart
           data={this.state.mobileData}
-         {...this.getLineChartProps('MobileTraffic(kb)')}
+          {...this.getLineChartProps('MobileTraffic(kb)')}
         />
 
         <LineChart

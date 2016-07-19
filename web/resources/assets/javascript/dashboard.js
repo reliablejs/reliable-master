@@ -392,7 +392,7 @@ if (charts) {
       '<td name="environment" class="td-environment"><input type="text" class="input-env" placeholder="' + placeholdervalue + '" value="' + inputvalue +'"/></td> ' +
       '</tr>';
     $('#table-environment').append(newRow);
-  }
+  };
 
   $('#add-environment').on('click', function () {
     addNewRow('', '');

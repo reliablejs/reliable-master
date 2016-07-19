@@ -48,7 +48,7 @@ const ProjectSchema = new Schema({
    * environment for project
    * <key, value>
    */
-  
+
   environment: {
     type: String
   },
