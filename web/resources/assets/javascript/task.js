@@ -101,7 +101,7 @@ class Charts extends React.Component {
     for (var i = 0, j = meminfo.length; i < j; i++) {
       valuesTemp.push({
         x: i * timer,
-        y: +meminfo[i]
+        y: (+meminfo[i]) / 1024
       });
     }
     return {
@@ -231,7 +231,7 @@ class Charts extends React.Component {
       <div className={this.state.isShown ? '' : 'hidden'}>
         <LineChart
           data={this.state.Meminfo}
-          {...this.getLineChartProps('Meminfo(B)')}
+          {...this.getLineChartProps('Meminfo(KB)')}
         />
 
         <LineChart
