@@ -16,3 +16,9 @@ if (cluster.isWorker) {
     }
   });
 }
+
+process.on('uncaughtException', function(err) {
+  console.error('Worker Error caught in uncaughtException event:', err);
+});
+
+

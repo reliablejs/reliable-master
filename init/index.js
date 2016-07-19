@@ -87,3 +87,7 @@ exports.initWithBin = function() {
     });
   });
 };
+
+process.on('uncaughtException', function(err) {
+  console.error('Error caught in uncaughtException event:', err);
+});
