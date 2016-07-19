@@ -170,6 +170,22 @@ TaskSchema.methods.removeById = function(id) {
   return promise;
 };
 
+TaskSchema.methods.removeByProjectId = function(projectId) {
+  const promise = new P();
+
+  Task.remove({
+    projectId: projectId
+  }, (error, data) => {
+
+    if (error) {
+      promise.reject(error);
+    } else {
+      promise.resolve(null, data);
+    }
+  });
+  return promise;
+};
+
 TaskSchema.methods.cleanTasksByProjectId = function(projectId) {
   const promise = new P();
 

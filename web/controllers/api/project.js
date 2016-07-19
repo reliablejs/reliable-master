@@ -2,9 +2,11 @@
 
 const models = require('../../../common/models');
 const _ = require('../../../common/utils/helper');
+const logger = require('../../../common/utils/logger');
 const pagination = require('../../../common/utils/pagination');
 
 const Project = models.Project;
+const Task = models.Task;
 
 function *getAllProjects(page) {
   const project = new Project();
@@ -86,12 +88,15 @@ function *deleteProject() {
   const post = yield _.parse(this);
   const id = post.id;
   const project = new Project();
+  const task = new Task();
 
-  if (project.removeById(id)) {
+  try {
+    yield [project.removeById(id), task.removeByProjectId(id)];
     this.body = {
       success: true
     };
-  } else {
+  } catch (e) {
+    logger.debug(`Failed to delete project ${id}, error: ${e}`);
     this.body = {
       success: false
     };
@@ -106,11 +111,13 @@ function *changeProjectStatus() {
   data.status = post.status;
   data.updated_at = Date.now();
 
-  if (project.updateById(id, data)) {
+  try {
+    yield project.updateById(id, data);
     this.body = {
       success: true
     };
-  } else {
+  } catch (e) {
+    logger.debug(`Failed to update project ${id}, error: ${e}`);
     this.body = {
       success: false
     };
