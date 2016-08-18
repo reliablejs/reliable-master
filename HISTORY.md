@@ -1,3 +1,6 @@
+# 1.0.3  / 2016-08-18
+  * Better i18n
+
 # 1.0.1  / 2016-03-24
 
   * Tweak Badgeboard to Support Title

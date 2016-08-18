@@ -387,9 +387,9 @@ if (charts) {
   var addNewRow = function (inputname, inputvalue) {
     var newRow = '<tr> ' +
       '<td class="td-environment"><span class="environment-left">' + name + '</span></td> ' +
-      '<td name="environment" class="td-environment"><input type="text" class="input-env" placeholder="' + placeholdername +'" value="' + inputname + '"/></td> ' +
+      '<td name="environment" class="td-environment"><input type="text" class="input-env" placeholder="' + placeholdername + '" value="' + inputname + '"/></td> ' +
       '<td class="td-environment"><span class="environment-right">' + value + '</span></td> ' +
-      '<td name="environment" class="td-environment"><input type="text" class="input-env" placeholder="' + placeholdervalue + '" value="' + inputvalue +'"/></td> ' +
+      '<td name="environment" class="td-environment"><input type="text" class="input-env" placeholder="' + placeholdervalue + '" value="' + inputvalue + '"/></td> ' +
       '</tr>';
     $('#table-environment').append(newRow);
   };
