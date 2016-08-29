@@ -1,6 +1,6 @@
 {
   "name": "reliable-master",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Distributed reliable continuous integration service.",
   "keywords": [
     "ci",

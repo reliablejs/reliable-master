@@ -13,7 +13,7 @@ module.exports = function(app) {
       locale = [locale];
     }
 
-    locale = _.intersection(locales, locale)[0] || app._options.site.locale;
+    locale = _.intersection(locale, locales)[0] || app._options.site.locale;
     app.options['locale'] = locale;
     this.gettext = i18n(locale);
     this.cookies.set('locale', locale);
