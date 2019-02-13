@@ -155,6 +155,7 @@ class BuildsTabs extends React.Component {
           updatePagination={this.updatePagination}
           pagination={this.state.pagination}
           loading={this.state.loading}
+          jobName={this.state.jobName}
         />
       </div>
     );

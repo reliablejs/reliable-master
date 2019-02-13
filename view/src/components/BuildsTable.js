@@ -23,7 +23,7 @@ export default class BuildsTable extends React.Component {
   handleTableChange = (pagination, filters, sorter) => {
     const pager = { ...this.props.pagination };
     pager.current = pagination.current;
-    this.props.updatePagination(pager);
+    this.props.updatePagination(pager, this.props.jobName);
   }
   columns = [{
     title: <FormattedMessage id='builds.jobName' />,
