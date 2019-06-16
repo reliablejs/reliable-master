@@ -16,7 +16,7 @@
 ```bash
 $ docker run --name reliable-mysql \
   -v $HOME/reliable_home/mysql_data:/var/lib/mysql \
-  --network my_network \
+  -p 3306:3306 \
   -d macacajs/reliable-mysql
 ```
 
