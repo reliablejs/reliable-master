@@ -50,7 +50,7 @@ Reliable 服务默认运行在 `http://127.0.0.1:9900`。
 
 Nginx 服务默认运行在 `http://127.0.0.1:9920`。
 
-需要按需修改 [docker-compose.yml](../docker-compose.yml) 配置。
+需要按需修改 [docker-compose.yml](https://github.com/macacajs/reliable/blob/master/docker-compose.yml) 配置。
 
 ### 其他 [Docker](https://docs.docker.com/) 服务部署
 
