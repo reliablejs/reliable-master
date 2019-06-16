@@ -41,6 +41,19 @@ RUN curl -SLO "$NODE_REGISTRY/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.g
       && tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 \
       && rm "node-v$NODE_VERSION-linux-x64.tar.gz"
 
+COPY . /root/reliable-web
+
+WORKDIR /root/reliable-web
+
+RUN npm install && ln -s /root/logs . \
+  && cd view && npm i \
+  && npm run build
+
+WORKDIR /root/reliable-web
+
+HEALTHCHECK --interval=10s --retries=6 \
+  CMD wget -O /dev/null localhost:9900 || echo 1
+
 ENTRYPOINT ["./entrypoint.sh"]
 
 EXPOSE 9900

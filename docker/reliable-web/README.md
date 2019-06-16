@@ -13,7 +13,9 @@
 
 ## production
 
-should launch `reliable-mysql` service first.
+Note: launch `reliable-mysql` service and seed data via `npm run db:seed:all` first.
+
+If you don't seed data the server will return 500 error.
 
 [available environment variable](./#environment-variable)
 

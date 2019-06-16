@@ -1,0 +1,19 @@
+version: "3"
+services:
+  mysql:
+    image: macacajs/reliable-mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - $HOME/reliable_home/mysql_data:/var/lib/mysql
+  web:
+    image: macacajs/reliable-web:v2
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - "9900:9900"
+    environment:
+      - MYSQL_HOST=mysql
+      - RELIABLE_HOST=127.0.0.1 # replace it with your hostname: RELIABLE_HOST=example.com
