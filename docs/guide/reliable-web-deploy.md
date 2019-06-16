@@ -2,11 +2,11 @@
 
 ---
 
-## Docker Deploy
+Note: You need to run both the database container (`reliable-mysql`) and the app (`reliable-web`) container for reliable to work.
 
-### Using [docker-compose](https://docs.docker.com/compose/) (recommended)
+## Using [docker-compose](https://docs.docker.com/compose/) (recommended)
 
-## production
+### production
 
 ```
 # start services
@@ -18,16 +18,22 @@ $ docker-compose -p reliable -f docker-compose.yml up -d
 $ docker-compose -p reliable -f docker-compose.yml down
 ```
 
-execute `docker ps`, we can see:
+Execute `docker ps`, we can see:
 
 ```
-CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS                      PORTS                                            NAMES
-8b2941c9774a        macacajs/reliable-web       "./entrypoint.sh npm…"   12 minutes ago      Up 12 minutes (healthy)     0.0.0.0:9900->9900/tcp                           reliable_web_1
-b726a3232cdc        macacajs/reliable-mysql     "docker-entrypoint.s…"   12 minutes ago      Up 12 minutes               3306/tcp                                         reliable_mysql_1
-ffb2ab9f12fb        macacajs/reliable-nginx     "nginx -g 'daemon of…"   12 minutes ago      Up 12 minutes               0.0.0.0:9920->80/tcp                             reliable_nginx_1
+$ docker ps
+CONTAINER ID        IMAGE                         COMMAND                  CREATED             STATUS                   PORTS                               NAMES
+d42a6be2a061        macacajs/reliable-web:test3   "./entrypoint.sh npm…"   3 minutes ago       Up 3 minutes (healthy)   0.0.0.0:9900->9900/tcp              reliable-web
+4d7d43591802        macacajs/reliable-mysql       "docker-entrypoint.s…"   20 minutes ago      Up 20 minutes            0.0.0.0:3306->3306/tcp, 33060/tcp   reliable-mysql
 ```
 
-go into the MySQL
+During the first deployment, seed the database before accessing the web portal. Otherwise 500 will be thrown:
+
+```bash
+$ NODE_ENV=production npm run db:seed:all
+```
+
+To go into the MySQL:
 
 ```bash
 $ docker exec -it reliable_mysql_1 mysql -uroot -preliable
@@ -36,7 +42,7 @@ mysql> show tables;
 mysql> select * from reliable.jobNames;
 ```
 
-## development
+### development
 
 ```
 # start services
@@ -48,11 +54,16 @@ $ docker-compose down
 
 Reliable server is running on `http://127.0.0.1:9900` by default.
 
-Nginx server is running on `http://127.0.0.1:9920` by default.
-
 Edit [docker-compose.yml](https://github.com/macacajs/reliable/blob/master/docker-compose.yml) to fit your need.
 
-### Using [docker](https://docs.docker.com/)
+## Using [docker](https://docs.docker.com/)
 
-- [reliable-web](../../docker/reliable-web/README.md)
-- [reliable-mysql](../../docker/reliable-mysql/README.md)
+### Database container - reliable-mysql
+
+- [Dockerfile](https://github.com/macacajs/reliable/blob/master/docker/reliable-mysql/Dockerfile)
+- [doc](https://github.com/macacajs/reliable/blob/master/docker/reliable-mysql/README.md)
+
+### Reliable main app container (backend and frontend) - reliable-web
+- [Dockerfile](https://github.com/macacajs/reliable/blob/master/Dockerfile)
+- [doc](https://github.com/macacajs/reliable/blob/master/docker/reliable-web/README.md)
+

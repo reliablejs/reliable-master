@@ -2,11 +2,11 @@
 
 ---
 
-## Docker 部署
+注意：运行 reliable 需要启动数据库容器（`reliable-mysql`）和应用容器（`reliable-web`）。
 
-### 使用 [docker-compose](https://docs.docker.com/compose/) (推荐)
+## 使用 [docker-compose](https://docs.docker.com/compose/) (推荐)
 
-## 生产环境
+### 生产环境
 
 ```bash
 # start services
@@ -21,13 +21,19 @@ $ docker-compose -p reliable -f docker-compose.yml down
 执行 `docker ps` 我们能够看到以下容器：
 
 ```
-CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS                      PORTS                                            NAMES
-8b2941c9774a        macacajs/reliable-web       "./entrypoint.sh npm…"   12 minutes ago      Up 12 minutes (healthy)     0.0.0.0:9900->9900/tcp                           reliable_web_1
-b726a3232cdc        macacajs/reliable-mysql     "docker-entrypoint.s…"   12 minutes ago      Up 12 minutes               3306/tcp                                         reliable_mysql_1
-ffb2ab9f12fb        macacajs/reliable-nginx     "nginx -g 'daemon of…"   12 minutes ago      Up 12 minutes               0.0.0.0:9920->80/tcp                             reliable_nginx_1
+$ docker ps
+CONTAINER ID        IMAGE                         COMMAND                  CREATED             STATUS                   PORTS                               NAMES
+d42a6be2a061        macacajs/reliable-web:test3   "./entrypoint.sh npm…"   3 minutes ago       Up 3 minutes (healthy)   0.0.0.0:9900->9900/tcp              reliable-web
+4d7d43591802        macacajs/reliable-mysql       "docker-entrypoint.s…"   20 minutes ago      Up 20 minutes            0.0.0.0:3306->3306/tcp, 33060/tcp   reliable-mysql
 ```
 
-进入 MySQL
+第一次运行需添加初始数据，否则服务器会返回500错误：
+
+```bash
+$ NODE_ENV=production npm run db:seed:all
+```
+
+如何进入 MySQL：
 
 ```bash
 $ docker exec -it reliable_mysql_1 mysql -uroot -preliable
@@ -36,7 +42,7 @@ mysql> show tables;
 mysql> select * from reliable.jobNames;
 ```
 
-## 开发环境
+### 开发环境
 
 ```bash
 # start services
@@ -52,7 +58,13 @@ Nginx 服务默认运行在 `http://127.0.0.1:9920`。
 
 需要按需修改 [docker-compose.yml](https://github.com/macacajs/reliable/blob/master/docker-compose.yml) 配置。
 
-### 其他 [Docker](https://docs.docker.com/) 服务部署
+## 其他 [Docker](https://docs.docker.com/) 服务部署
 
-- [reliable-web](../../docker/reliable-web/README.md)
-- [reliable-mysql](../../docker/reliable-mysql/README.md)
+### Database container - reliable-mysql
+
+- [Dockerfile](https://github.com/macacajs/reliable/blob/master/docker/reliable-mysql/Dockerfile)
+- [doc](https://github.com/macacajs/reliable/blob/master/docker/reliable-mysql/README.md)
+
+### Reliable main app container (backend and frontend) - reliable-web
+- [Dockerfile](https://github.com/macacajs/reliable/blob/master/Dockerfile)
+- [doc](https://github.com/macacajs/reliable/blob/master/docker/reliable-web/README.md)
