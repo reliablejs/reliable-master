@@ -2,7 +2,7 @@
 
 ---
 
-You need to run both database and app containers
+You need to run both `database` and `app` containers
 
 ## Running both together with docker-compose
 

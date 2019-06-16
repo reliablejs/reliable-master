@@ -50,7 +50,7 @@ Reliable server is running on `http://127.0.0.1:9900` by default.
 
 Nginx server is running on `http://127.0.0.1:9920` by default.
 
-should edit [docker-compose.yml](../docker-compose.yml) on demand.
+Edit [docker-compose.yml](https://github.com/macacajs/reliable/blob/master/docker-compose.yml) to fit your need.
 
 ### Using [docker](https://docs.docker.com/)
 
