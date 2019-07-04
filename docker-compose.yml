@@ -17,3 +17,11 @@ services:
     environment:
       - MYSQL_HOST=mysql
       - RELIABLE_HOST=127.0.0.1 # replace it with your hostname: RELIABLE_HOST=example.com
+  static:
+    image: macacajs/reliable-nginx
+    restart: always
+    volumes:
+      - $HOME/reliable_home/static:/usr/share/nginx/html
+    ports:
+      - "9920:80"
+
