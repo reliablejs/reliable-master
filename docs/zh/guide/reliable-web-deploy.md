@@ -54,7 +54,8 @@ $ docker-compose down
 
 Reliable 服务默认运行在 `http://127.0.0.1:9900`。
 
-Nginx 服务默认运行在 `http://127.0.0.1:9920`。
+Nginx 服务默认运行在 `http://127.0.0.1:9920`，服务的跟路径在
+`$HOME/reliable_home/static`，如果不需要也可以去掉这项服务。
 
 需要按需修改 [docker-compose.yml](https://github.com/macacajs/reliable/blob/master/docker-compose.yml) 配置。
 
@@ -66,5 +67,6 @@ Nginx 服务默认运行在 `http://127.0.0.1:9920`。
 - [doc](https://github.com/macacajs/reliable/blob/master/docker/reliable-mysql/README.md)
 
 ### Reliable main app container (backend and frontend) - reliable-web
+
 - [Dockerfile](https://github.com/macacajs/reliable/blob/master/Dockerfile)
 - [doc](https://github.com/macacajs/reliable/blob/master/docker/reliable-web/README.md)
