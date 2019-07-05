@@ -22,7 +22,7 @@ $ docker run --name reliable-nginx \
 
 ---
 
-Just for deveoper
+Just for developer
 
 ## build image
 
