@@ -20,7 +20,6 @@ export default class SiderBar extends React.Component {
         trigger={null}
         collapsible
         width="200px"
-        style={{ minHeight: '100%' }}
         collapsed={this.props.collapsed}
       >
         <div className="logo">

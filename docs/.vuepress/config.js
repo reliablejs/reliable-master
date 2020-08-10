@@ -1,6 +1,7 @@
 'use strict';
 
 const macacaEcosystem = require('macaca-ecosystem');
+const traceFragment = require('macaca-ecosystem/lib/trace-fragment');
 
 const name = 'reliable';
 
@@ -37,6 +38,7 @@ module.exports = {
       gtag('js', new Date());
       gtag('config', 'UA-49226133-2');
     `],
+    ['script', {}, traceFragment],
     ['style', {}, `
       img {
         width: 100%;
@@ -68,7 +70,11 @@ module.exports = {
           macacaEcosystem.en,
         ],
         sidebar: {
-          '/guide/': genSidebarConfig(['Guide', 'CI/CD', 'Community']),
+          '/guide/': genSidebarConfig([
+            'Guide',
+            'CI/CD',
+            'Community'
+          ]),
         },
       },
       '/zh/': {
@@ -90,7 +96,11 @@ module.exports = {
           macacaEcosystem.zh,
         ],
         sidebar: {
-          '/zh/guide/': genSidebarConfig(['使用指南', '持续集成', '社区支持']),
+          '/zh/guide/': genSidebarConfig([
+            '使用指南',
+            '持续集成',
+            '社区支持'
+          ]),
         },
       },
     },
@@ -116,6 +126,13 @@ function genSidebarConfig(arr) {
         'jenkins-ios',
         'jenkins-android',
         'integrate-with-gitlab-ci',
+      ],
+    },
+    {
+      title: arr[2],
+      collapsable: false,
+      children: [
+        'presentations',
       ],
     },
   ];

@@ -14,7 +14,7 @@ before_install:
   - docker ps -a
 
 install:
-  - npm i npminstall && npminstall
+  - npm i
 
 script:
   - npm run docs:build
@@ -23,4 +23,4 @@ script:
   - MYSQL_PORT=13306 npm run ci
 
 after_script:
-  - npminstall codecov && codecov
+  - npm i codecov && $(npm bin)/codecov

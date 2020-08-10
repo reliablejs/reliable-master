@@ -44,3 +44,9 @@ $ docker run --rm --name reliable-mysql \
 # stop
 $ docker stop reliable-mysql
 ```
+
+## Without Docker
+
+```bash
+$ mysql -h127.0.0.1 -u root -e "create database \`reliable\` character set utf8mb4"
+```

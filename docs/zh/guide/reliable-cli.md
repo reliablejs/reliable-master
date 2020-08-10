@@ -136,5 +136,4 @@ $ RELIABLE_SERVER_URL=http://127.0.0.1:9900 ci.sh
 
 - [ios-app-bootstrap](//github.com/app-bootstrap/ios-app-bootstrap)
 - [android-app-bootstrap](//github.com/app-bootstrap/android-app-bootstrap)
-- [awesome-practice-projects](//github.com/app-bootstrap/awesome-practice-projects)
 - [web-app-bootstrap](//github.com/app-bootstrap/web-app-bootstrap)

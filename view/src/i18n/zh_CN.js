@@ -21,8 +21,8 @@ export default {
   'setting.site': '站点设置',
 
   'builds.buildNumber': '构建号',
-  'builds.buildLog': '构建日志',
-  'builds.jobName': '构建名',
+  'builds.buildLog': '运行日志',
+  'builds.jobName': '项目名',
   'builds.platform': '平台',
   'builds.buildEndTime': '完成时间',
   'builds.detailInfo': '详情',
@@ -31,7 +31,7 @@ export default {
   'buildinfo.pkgTab': '包信息',
   'buildinfo.testTab': '测试结果',
   'buildinfo.extraTab': '扩展信息',
-  'buildinfo.filesTab': '构建产物',
+  'buildinfo.filesTab': '产物',
 
   'buildinfo.pkg.version': '版本号',
   'buildinfo.pkg.type': '类型',
@@ -41,7 +41,7 @@ export default {
   'buildinfo.pkg.gitInfo': '提交信息',
   'buildinfo.pkg.committer': '提交人',
   'buildinfo.pkg.commitTime': '提交时间',
-  'buildinfo.state': '构建状态',
+  'buildinfo.state': '状态',
 
   'buildinfo.test.lineCoverage': '行覆盖率',
   'buildinfo.test.passPercent': '通过率',
@@ -56,7 +56,7 @@ export default {
   'buildinfo.files.fileAddress': '下载地址',
 
   'insight.builds.number': '应用总数',
-  'insight.builds.trend': '构建趋势',
+  'insight.builds.trend': '构建总数',
   'insight.builds.top': '榜单',
   'insight.test.lineCoverage': '平均行覆盖率',
   'insight.test.lineCoverage.tip': '测试覆盖率的平均值',
@@ -65,8 +65,8 @@ export default {
   'insight.test.passPercent': '通过率',
   'insight.test.passPercent.tip': 'CI 100% 成功次数 / CI 执行次数',
   'insight.test.passPercent.history': '通过率历史记录',
-  'insight.test.duration': '平均构建时长',
-  'insight.test.duration.history': '构建时长历史记录',
+  'insight.test.duration': '平均时长',
+  'insight.test.duration.history': '时长历史记录',
   'insight.committer': '最后提交',
   'insight.dateRange.tip': '请选择时间范围，不选择将会统计全部数据',
 

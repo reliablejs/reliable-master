@@ -3,13 +3,15 @@
 const {
   Controller,
 } = require('egg');
+const safeGet = require('lodash/get');
 
 class HomeController extends Controller {
   async index() {
     const ctx = this.ctx;
     const user = ctx.session.user;
     const { appid, callbackUrl } = ctx.app.config.authorize.dingtalkAuth;
-    const { data: configRes } = await this.ctx.model.Config.findOne({ raw: true });
+    const siteConfig = await this.ctx.model.Config.findOne({ raw: true });
+    const assetsUrl = safeGet(siteConfig, 'data.site.assetsUrl');
     ctx.body = await this.app.render({
       dingtalkAuth: {
         appid,
@@ -20,7 +22,7 @@ class HomeController extends Controller {
       title: 'Reliable Suites for Macaca',
       pageId: 'home',
       SERVER_ADDRESS: this.config.reliableView.serverUrl,
-      assetsUrl: configRes.site && configRes.site.assetsUrl || this.config.reliableView.assetsUrl,
+      assetsUrl: assetsUrl || this.config.reliableView.assetsUrl,
       version: this.app.config.pkg.version,
     });
   }

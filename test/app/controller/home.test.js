@@ -1,18 +1,28 @@
 'use strict';
 
-const { app, assert } = require('egg-mock/bootstrap');
+const { app } = require('egg-mock/bootstrap');
 
 describe('test/app/controller/home.test.js', () => {
 
-  it('assert keys', () => {
-    const pkg = require('../../../package.json');
-    assert(app.config.keys.startsWith(pkg.name));
-  });
+  describe('GET /', () => {
+    it('should be ok', () => {
+      return app.httpRequest()
+        .get('/')
+        .expect(/Reliable Suites for Macaca/)
+        .expect(200);
+    });
 
-  it('GET /', () => {
-    return app.httpRequest()
-      .get('/')
-      .expect(/Reliable Suites for Macaca/)
-      .expect(200);
+    it('should be ok with site config', async () => {
+      const ctx = app.mockContext();
+      await ctx.model.Config.create({
+        data: {
+          site: {
+            assetsUrl: 'https://foo',
+          },
+        },
+      });
+      return app.httpRequest()
+        .get('/');
+    });
   });
 });

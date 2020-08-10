@@ -22,7 +22,9 @@ export default class ReliableLayout extends React.Component {
 
   render () {
     return (
-      <Layout>
+      <Layout
+        style={{ minHeight: '100%' }}
+      >
         { !this.props.hideMenu && <SiderBar collapsed={this.state.collapsed} /> }
         <Layout>
           <Header

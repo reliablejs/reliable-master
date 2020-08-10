@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactGA from 'react-ga';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter } from 'react-router-dom';
 import { addLocaleData, IntlProvider } from 'react-intl';
@@ -43,6 +44,11 @@ const chooseLocale = () => {
   }
 };
 const lang = chooseLocale();
+
+window.addEventListener('load', () => {
+  ReactGA.initialize('UA-49226133-2');
+  ReactGA.pageview(window.location.pathname + window.location.search);
+});
 
 ReactDOM.render(
   <IntlProvider
