@@ -21,15 +21,15 @@
 [![docker layers][docker-layers-image]][docker-url]
 [![docker-size][docker-size-image]][docker-url]
 
-[travis-image]: https://img.shields.io/travis/macacajs/reliable/master.svg?style=flat-square&logo=travis
-[travis-url]: https://travis-ci.org/macacajs/reliable
-[codecov-image]: https://img.shields.io/codecov/c/github/macacajs/reliable/master.svg?style=flat-square
+[travis-image]: https://travis-ci.com/macacajs/reliable.svg?branch=master
+[travis-url]: https://travis-ci.com/macacajs/reliable
+[codecov-image]: https://img.shields.io/codecov/c/github/macacajs/reliable/master.svg
 [codecov-url]: https://codecov.io/gh/macacajs/reliable
-[node-image]: https://img.shields.io/badge/node.js-%3E=_8-green.svg?style=flat-square
+[node-image]: https://img.shields.io/badge/node.js-%3E=_12-green.svg
 [node-url]: http://nodejs.org/download/
-[docker-pull-image]: https://img.shields.io/docker/pulls/macacajs/reliable-web.svg?style=flat-square&logo=dockbit
-[docker-layers-image]: https://img.shields.io/microbadger/layers/macacajs/reliable-web.svg?style=flat-square&logo=dockbit
-[docker-size-image]: https://img.shields.io/microbadger/image-size/macacajs/reliable-web.svg?style=flat-square&logo=dockbit
+[docker-pull-image]: https://img.shields.io/docker/pulls/macacajs/reliable-web.svg?logo=dockbit
+[docker-layers-image]: https://img.shields.io/microbadger/layers/macacajs/reliable-web.svg?logo=dockbit
+[docker-size-image]: https://img.shields.io/microbadger/image-size/macacajs/reliable-web.svg?logo=dockbit
 [docker-url]: https://hub.docker.com/r/macacajs/reliable-web/
 
 > Testing management suite with continuous delivery support.
