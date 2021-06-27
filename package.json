@@ -31,7 +31,7 @@
     "request": "^2.88.0",
     "sinon": "^6.1.4",
     "uuid": "^3.3.2",
-    "vuepress": "^0.14.8"
+    "vuepress": "^1.8.2"
   },
   "engines": {
     "node": ">=8.9.0"
