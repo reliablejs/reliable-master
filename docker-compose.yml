@@ -24,4 +24,3 @@ services:
       - $HOME/reliable_home/static:/usr/share/nginx/html
     ports:
       - "9920:80"
-

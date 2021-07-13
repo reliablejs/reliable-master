@@ -3,12 +3,9 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
-import Clipboard from 'awesome-clipboard';
 import {
   Icon,
   Table,
-  Popover,
-  message,
 } from 'antd';
 import { FormattedMessage } from 'react-intl';
 
