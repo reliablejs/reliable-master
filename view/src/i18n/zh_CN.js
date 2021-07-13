@@ -69,5 +69,4 @@ export default {
   'insight.test.duration.history': '时长历史记录',
   'insight.committer': '最后提交',
   'insight.dateRange.tip': '请选择时间范围，不选择将会统计全部数据',
-
 };
